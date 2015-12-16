@@ -1,11 +1,24 @@
 package domain;
+
+import discount.CalculatePrice;
+
 public class Order {
 	int quantity;
 	private Product product;
+	private CalculatePrice strategy;
 	
-	public Order(int quantity, Product product){
+	public Order(int quantity, Product product, CalculatePrice calculator){
 		setQuantity(quantity);
 		setProduct(product);
+		setStrategy(calculator);
+	}
+
+	private void setStrategy(CalculatePrice calculator) {
+		this.strategy = calculator;
+	}
+	
+	public CalculatePrice getStrategy(){
+		return this.strategy;
 	}
 
 	private void setProduct(Product product) {

@@ -3,9 +3,11 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import discount.CalculatePrice;
 import domain.Order;
 public class Invoice implements InvoiceObservable{
 	private List<Order>productOrders;
+	CalculatePrice calculator;
 	
 	
 	private List<InvoiceObserver> observers;
@@ -49,7 +51,7 @@ public class Invoice implements InvoiceObservable{
 	public double getPrice(){
 		double total = 0;
 		for(Order order : productOrders){
-			total+= order.getPrice();
+			total+= order.getStrategy().calculateTotal(productOrders, order.getProduct().getId());
 		}
 		return total;
 	}

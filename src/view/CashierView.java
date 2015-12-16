@@ -27,6 +27,7 @@ public class CashierView extends JFrame implements InvoiceObserver {
 		private JTextField productId  = new JTextField(5);
 		private JLabel productLabel = new JLabel("Product: ");
 		private JTextField quantity = new JTextField(3);
+		
 		public DefaultTableModel getModel() {
 			return model;
 		}
@@ -34,10 +35,14 @@ public class CashierView extends JFrame implements InvoiceObserver {
 		public void setModel(DefaultTableModel model) {
 			this.model = model;
 		}
+		
 		private JLabel quantityLabel = new JLabel("Quantity: ");
 		private JTextField price = new JTextField(5);
 		private JLabel pay = new JLabel("To pay: ");
 		private JButton addButton = new JButton("Add");
+		private JLabel promo = new JLabel("Promotion code: ");
+		private JTextField promocode = new JTextField(20);
+		private JButton promoButton = new JButton("Enter");
 		
 		
 		private DefaultTableModel model = new DefaultTableModel();
@@ -71,6 +76,9 @@ public class CashierView extends JFrame implements InvoiceObserver {
 			panel.add(addButton);
 			panel.add(pay);
 			panel.add(price);
+			panel.add(promo);
+			panel.add(promocode);
+			panel.add(promoButton);
 			this.add(panel);
 			table.setVisible(true);
 			
@@ -91,8 +99,20 @@ public class CashierView extends JFrame implements InvoiceObserver {
 			price.setText(Double.toString(dble));
 		}
 		
+		public String getPromocode(){
+			return promocode.getText();
+		}
+		
+		public void setPromocode(String code){
+			promocode.setText(code);
+		}
+		
 		public void addPriceListener(ActionListener listenForAddButton){
 			addButton.addActionListener(listenForAddButton);
+		}
+		
+		public void addPromoListener(ActionListener listenForPromoButton){
+			promoButton.addActionListener(listenForPromoButton);
 		}
 		public void displayErrorMessage(String errorMessage){
 			JOptionPane.showMessageDialog(null, errorMessage);
