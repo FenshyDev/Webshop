@@ -2,7 +2,9 @@ package states;
 
 import domain.Invoice;
 import domain.Order;
-
+/**
+ * @author Ruben Schroyen
+ */
 public class Paid implements State {
 	private Invoice invoice;
 	

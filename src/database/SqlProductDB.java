@@ -13,7 +13,9 @@ import java.util.Properties;
 import controller.Dictionary;
 import domain.DomainException;
 import domain.Product;
-
+/**
+ * @author Ruben Schroyen, Wannes Fransen
+ */
 public class SqlProductDB implements ProductDB {
 
 	private PreparedStatement statement;

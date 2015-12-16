@@ -26,7 +26,9 @@ import domain.Sales;
 import domain.Invoice;
 import view.CustomerView;
 import view.CashierView;
-
+/**
+ * @author Ruben Schroyen
+ */
 public class SaleController {
 	private Sales register;
 	private CashierView mView;

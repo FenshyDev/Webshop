@@ -1,5 +1,7 @@
 package discount;
-
+/**
+ * @author Ruben Schroyen
+ */
 import java.util.List;
 
 import domain.Order;

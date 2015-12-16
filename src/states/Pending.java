@@ -1,5 +1,7 @@
 package states;
-
+/**
+ * @author Ruben Schroyen
+ */
 import domain.Invoice;
 import domain.Order;
 

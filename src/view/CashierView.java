@@ -15,11 +15,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
-
+/**
+ * @author Ruben Schroyen
+ */
 public class CashierView extends JFrame implements InvoiceObserver {
 
 		/**
-		 * 
+		 * @author Ruben Schroyen
 		 */
 	
 		private InvoiceObservable observable ;

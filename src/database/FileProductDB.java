@@ -1,7 +1,9 @@
 package database;
 
 
-
+/**
+ * @author Ruben Schroyen
+ */
 
 
 import java.io.File;
@@ -16,23 +18,23 @@ import domain.Product;
 public class FileProductDB implements ProductDB {
 	
 	private Map<String, Product> items;
-	private String bestand;
+	private String file;
 	
-	public FileProductDB(String bestand) throws DomainException{
+	public FileProductDB(String file) throws DomainException{
 		items = new HashMap<String, Product>();
-		setBestand(bestand);
+		setFile(file);
 		try {
 			connectDB();
 		} catch (FileNotFoundException f) {
-			throw new DomainException("Bestand werd niet gevonden!");
+			throw new DomainException("File not found!");
 		}
 	}
 	
-	public void setBestand(String bestand) {
-		if (bestand == null){
-			throw new NullPointerException("Nullpointer setBestand FileProductDB ...");
+	public void setFile(String file) {
+		if (file == null){
+			throw new NullPointerException("Nullpointer setFile FileProductDB ...");
 		}
-		this.bestand = bestand;
+		this.file = file;
 	}
 	
 	public void delete(String id) {
@@ -41,14 +43,14 @@ public class FileProductDB implements ProductDB {
 
 	public void add(Product item) throws DomainException {
 		if(this.items.containsKey(item.getId())){
-			throw new DomainException("Er is al een item met deze id..." + item.getId());
+			throw new DomainException("There is already an item with this id..." + item.getId());
 		}
 		items.put(item.getId(),item);
 	}
 
 	public Product getItem(String id) throws DomainException {
 		if(!this.items.containsKey(id)){
-			throw new DomainException("Er is geen item met deze id...");
+			throw new DomainException("There is no item with this id...");
 		}
 		Product item=items.get(id);
 		return item;				
@@ -64,8 +66,8 @@ public class FileProductDB implements ProductDB {
 	
 	public void close() throws DomainException{		
 		try {
-			File file = new File(bestand);
-			PrintWriter printer = new PrintWriter(file);
+			File doc = new File(file);
+			PrintWriter printer = new PrintWriter(doc);
 			List<Product> items = this.getAll();
 			for(Product item: items)
 			 {
@@ -74,21 +76,21 @@ public class FileProductDB implements ProductDB {
 			printer.close();
 		}
 		catch (FileNotFoundException ex) {
-			throw new DomainException("Bestand werd niet gevonden");
+			throw new DomainException("File not found");
 		}
 	}
 
 	public void connectDB() throws FileNotFoundException {
-			File file = new File(bestand);
-			Scanner scanner = new Scanner(file);
+			File doc = new File(file);
+			Scanner scanner = new Scanner(doc);
 			while (scanner.hasNext()) {
 				String lijn = scanner.nextLine();
 				if (!lijn.equals("")) {
-					String [] velden = lijn.split("\t");
+					String [] fields = lijn.split("\t");
 
-					String id = velden[0];
-					String title = velden[1];		
-					String priceStr= velden[2];
+					String id = fields[0];
+					String title = fields[1];		
+					String priceStr= fields[2];
 					double price= Double.parseDouble(priceStr);
 					Product item= new Product(title,id,price);
 					items.put(item.getId(), item);

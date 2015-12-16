@@ -1,7 +1,9 @@
 package domain;
 
 import discount.CalculatePrice;
-
+/**
+ * @author Ruben Schroyen
+ */
 public class Order {
 	int quantity;
 	private Product product;

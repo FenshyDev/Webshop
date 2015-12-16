@@ -3,7 +3,9 @@ package discount;
 import java.util.List;
 
 import domain.Order;
-
+/**
+ * @author Ruben Schroyen
+ */
 public class SalePercentagePromotion implements CalculatePrice{
 
 	@Override

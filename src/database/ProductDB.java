@@ -1,6 +1,8 @@
 package database;
 
-
+/**
+ * @author Ruben Schroyen
+ */
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;

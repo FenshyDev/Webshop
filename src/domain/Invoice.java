@@ -9,7 +9,9 @@ import states.State;
 public class Invoice implements InvoiceObservable{
 	private List<Order>productOrders;
 	CalculatePrice calculator;
-	
+	/**
+	 * @author Ruben Schroyen, Wannes Fransen
+	 */
 	
 	private List<InvoiceObserver> observers;
 	private State state;

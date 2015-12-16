@@ -1,7 +1,9 @@
 package controller;
 
 import java.util.Properties;
-
+/**
+ * @author Wannes Fransen
+ */
 public class Dictionary {
 	Properties properties;
 	

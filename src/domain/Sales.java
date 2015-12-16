@@ -2,7 +2,9 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author Ruben Schroyen
+ */
 public class Sales {
 	List<Invoice> invoices;
 	

@@ -1,6 +1,8 @@
 package domain;
 public class Product {
-	 
+	/**
+	 * @author Ruben Schroyen
+	 */
 	private String title;
 	private String id;
 	private double price;
