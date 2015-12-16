@@ -5,12 +5,14 @@ import java.util.List;
 
 import discount.CalculatePrice;
 import domain.Order;
+import states.State;
 public class Invoice implements InvoiceObservable{
 	private List<Order>productOrders;
 	CalculatePrice calculator;
 	
 	
 	private List<InvoiceObserver> observers;
+	private State state;
 	public Invoice(){
 		this.productOrders = new ArrayList<Order>();
 		observers= new ArrayList<InvoiceObserver>();
@@ -96,6 +98,14 @@ public class Invoice implements InvoiceObservable{
 		for(Order order : productOrders)
 			alles += "ProductOrder: " + order.toString();
 		return alles;
+	}
+
+	public void setState(State state) {
+		this.state = state;
+	}
+	
+	public State getState(){
+		return this.state;
 	}
 	
 	

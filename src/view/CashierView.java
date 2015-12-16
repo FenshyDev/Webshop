@@ -43,6 +43,7 @@ public class CashierView extends JFrame implements InvoiceObserver {
 		private JLabel promo = new JLabel("Promotion code: ");
 		private JTextField promocode = new JTextField(20);
 		private JButton promoButton = new JButton("Enter");
+		private JButton confirm = new JButton("Go to payment screen");
 		
 		
 		private DefaultTableModel model = new DefaultTableModel();
@@ -79,6 +80,7 @@ public class CashierView extends JFrame implements InvoiceObserver {
 			panel.add(promo);
 			panel.add(promocode);
 			panel.add(promoButton);
+			panel.add(confirm);
 			this.add(panel);
 			table.setVisible(true);
 			
@@ -109,6 +111,10 @@ public class CashierView extends JFrame implements InvoiceObserver {
 		
 		public void addPriceListener(ActionListener listenForAddButton){
 			addButton.addActionListener(listenForAddButton);
+		}
+		
+		public void addConfirmListener(ActionListener listenForConfirmButton){
+			confirm.addActionListener(listenForConfirmButton);
 		}
 		
 		public void addPromoListener(ActionListener listenForPromoButton){
