@@ -10,6 +10,7 @@ import domain.InvoiceObservable;
 import domain.InvoiceObserver;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +82,39 @@ public class CashierView extends JFrame implements InvoiceObserver {
 			panel.add(promocode);
 			panel.add(promoButton);
 			panel.add(confirm);
+			confirm.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					final JFrame frame = new JFrame("Confirm Payment");
+					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+					JPanel panel2 = new JPanel();
+					panel2.add(new JLabel("Amount paid by customer:"));
+					panel2.add(new JTextField(20));
+					JButton cancel = new JButton("Cancel");
+					JButton confirm = new JButton("Confirm");
+					cancel.addActionListener(new ActionListener(){
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							frame.setVisible(false);
+						}
+					});
+					
+					confirm.addActionListener(new ActionListener(){
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							frame.setVisible(false);
+						}
+					});
+					panel2.add(cancel);
+					panel2.add(confirm);
+					frame.add(panel2);
+					frame.setVisible(true);
+					frame.pack();
+					
+				}
+			});
+			
 			this.add(panel);
 			table.setVisible(true);
 			
@@ -111,10 +145,6 @@ public class CashierView extends JFrame implements InvoiceObserver {
 		
 		public void addPriceListener(ActionListener listenForAddButton){
 			addButton.addActionListener(listenForAddButton);
-		}
-		
-		public void addConfirmListener(ActionListener listenForConfirmButton){
-			confirm.addActionListener(listenForConfirmButton);
 		}
 		
 		public void addPromoListener(ActionListener listenForPromoButton){
